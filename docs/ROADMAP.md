@@ -12,7 +12,8 @@
 
 ## 0.2 — Discovery quality
 - [ ] Category landing views with meaningful filters
-- [ ] Search across source registry
+- [x] Search across source registry
+- [x] Filter source registry by category and access method
 - [ ] Save / bookmark discoveries with a complete interaction
 - [ ] Better loading, empty, offline and stale states
 - [ ] Basic accessibility and performance audit

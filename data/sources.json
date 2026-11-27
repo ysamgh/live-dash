@@ -1,0 +1,352 @@
+[
+  {
+    "id": "zoom-earth",
+    "category": "Earth",
+    "name": "Zoom Earth",
+    "url": "https://zoom.earth/",
+    "access": "outbound"
+  },
+  {
+    "id": "flightradar24",
+    "category": "Humanity",
+    "name": "Flightradar24",
+    "url": "https://www.flightradar24.com/",
+    "access": "terms-review"
+  },
+  {
+    "id": "marinetraffic",
+    "category": "Humanity",
+    "name": "MarineTraffic",
+    "url": "https://www.marinetraffic.com/",
+    "access": "terms-review"
+  },
+  {
+    "id": "windy",
+    "category": "Earth",
+    "name": "Windy",
+    "url": "https://www.windy.com/",
+    "access": "terms-review"
+  },
+  {
+    "id": "lightningmaps",
+    "category": "Earth",
+    "name": "LightningMaps",
+    "url": "https://www.lightningmaps.org/",
+    "access": "outbound"
+  },
+  {
+    "id": "usgs-earthquakes",
+    "category": "Earth",
+    "name": "USGS Earthquakes",
+    "url": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php",
+    "access": "api-integrated"
+  },
+  {
+    "id": "submarine-cables",
+    "category": "Humanity",
+    "name": "Submarine Cable Map",
+    "url": "https://www.submarinecablemap.com/",
+    "access": "outbound"
+  },
+  {
+    "id": "global-forest-watch",
+    "category": "Earth",
+    "name": "Global Forest Watch",
+    "url": "https://www.globalforestwatch.org/",
+    "access": "api-review"
+  },
+  {
+    "id": "worldometers",
+    "category": "Knowledge",
+    "name": "Worldometer",
+    "url": "https://www.worldometers.info/",
+    "access": "outbound"
+  },
+  {
+    "id": "internet-live-stats",
+    "category": "Knowledge",
+    "name": "Internet Live Stats",
+    "url": "https://www.internetlivestats.com/",
+    "access": "outbound"
+  },
+  {
+    "id": "true-size",
+    "category": "Knowledge",
+    "name": "The True Size",
+    "url": "https://www.thetruesize.com/",
+    "access": "outbound"
+  },
+  {
+    "id": "old-maps-online",
+    "category": "History",
+    "name": "Old Maps Online",
+    "url": "https://www.oldmapsonline.org/",
+    "access": "outbound"
+  },
+  {
+    "id": "david-rumsey",
+    "category": "History",
+    "name": "David Rumsey Map Collection",
+    "url": "https://www.davidrumsey.com/",
+    "access": "outbound"
+  },
+  {
+    "id": "openstreetmap",
+    "category": "Earth",
+    "name": "OpenStreetMap",
+    "url": "https://www.openstreetmap.org/",
+    "access": "map-provider"
+  },
+  {
+    "id": "window-swap",
+    "category": "Culture",
+    "name": "WindowSwap",
+    "url": "https://www.window-swap.com/",
+    "access": "outbound"
+  },
+  {
+    "id": "virtual-vacation",
+    "category": "Culture",
+    "name": "Virtual Vacation",
+    "url": "https://virtualvacation.us/",
+    "access": "outbound"
+  },
+  {
+    "id": "mapcrunch",
+    "category": "Culture",
+    "name": "MapCrunch",
+    "url": "https://www.mapcrunch.com/",
+    "access": "outbound"
+  },
+  {
+    "id": "atlas-obscura",
+    "category": "Culture",
+    "name": "Atlas Obscura",
+    "url": "https://www.atlasobscura.com/",
+    "access": "outbound"
+  },
+  {
+    "id": "neal-fun",
+    "category": "Curiosity",
+    "name": "Neal.fun",
+    "url": "https://neal.fun/",
+    "access": "outbound"
+  },
+  {
+    "id": "scale-universe",
+    "category": "Science",
+    "name": "Scale of the Universe",
+    "url": "https://htwins.net/scale2/",
+    "access": "outbound"
+  },
+  {
+    "id": "nasa-eyes",
+    "category": "Universe",
+    "name": "NASA Eyes",
+    "url": "https://eyes.nasa.gov/",
+    "access": "outbound"
+  },
+  {
+    "id": "stellarium",
+    "category": "Universe",
+    "name": "Stellarium Web",
+    "url": "https://stellarium-web.org/",
+    "access": "outbound"
+  },
+  {
+    "id": "nasa-apod",
+    "category": "Universe",
+    "name": "NASA Astronomy Picture of the Day",
+    "url": "https://apod.nasa.gov/apod/astropix.html",
+    "access": "api-integrated"
+  },
+  {
+    "id": "nasa-images",
+    "category": "Universe",
+    "name": "NASA Image and Video Library",
+    "url": "https://images.nasa.gov/",
+    "access": "api-review"
+  },
+  {
+    "id": "pudding",
+    "category": "Knowledge",
+    "name": "The Pudding",
+    "url": "https://pudding.cool/",
+    "access": "outbound"
+  },
+  {
+    "id": "our-world-in-data",
+    "category": "Knowledge",
+    "name": "Our World in Data",
+    "url": "https://ourworldindata.org/",
+    "access": "api-review"
+  },
+  {
+    "id": "gapminder",
+    "category": "Knowledge",
+    "name": "Gapminder",
+    "url": "https://www.gapminder.org/",
+    "access": "outbound"
+  },
+  {
+    "id": "information-beautiful",
+    "category": "Knowledge",
+    "name": "Information is Beautiful",
+    "url": "https://informationisbeautiful.net/",
+    "access": "outbound"
+  },
+  {
+    "id": "world-bank-data",
+    "category": "Knowledge",
+    "name": "World Bank Open Data",
+    "url": "https://data.worldbank.org/",
+    "access": "api-review"
+  },
+  {
+    "id": "tuik",
+    "category": "Knowledge",
+    "name": "Turkish Statistical Institute",
+    "url": "https://data.tuik.gov.tr/",
+    "access": "outbound"
+  },
+  {
+    "id": "internet-archive",
+    "category": "History",
+    "name": "Internet Archive",
+    "url": "https://archive.org/",
+    "access": "outbound"
+  },
+  {
+    "id": "gutenberg",
+    "category": "Books",
+    "name": "Project Gutenberg",
+    "url": "https://www.gutenberg.org/",
+    "access": "outbound"
+  },
+  {
+    "id": "open-library",
+    "category": "Books",
+    "name": "Open Library",
+    "url": "https://openlibrary.org/",
+    "access": "api-review"
+  },
+  {
+    "id": "loc",
+    "category": "History",
+    "name": "Library of Congress",
+    "url": "https://www.loc.gov/",
+    "access": "api-review"
+  },
+  {
+    "id": "europeana",
+    "category": "Culture",
+    "name": "Europeana",
+    "url": "https://www.europeana.eu/",
+    "access": "api-review"
+  },
+  {
+    "id": "digital-public-library",
+    "category": "Culture",
+    "name": "Digital Public Library of America",
+    "url": "https://dp.la/",
+    "access": "api-review"
+  },
+  {
+    "id": "google-arts-culture",
+    "category": "Culture",
+    "name": "Google Arts & Culture",
+    "url": "https://artsandculture.google.com/",
+    "access": "outbound"
+  },
+  {
+    "id": "rijksmuseum",
+    "category": "Culture",
+    "name": "Rijksmuseum",
+    "url": "https://www.rijksmuseum.nl/",
+    "access": "api-review"
+  },
+  {
+    "id": "wikiart",
+    "category": "Culture",
+    "name": "WikiArt",
+    "url": "https://www.wikiart.org/",
+    "access": "terms-review"
+  },
+  {
+    "id": "public-domain-review",
+    "category": "History",
+    "name": "The Public Domain Review",
+    "url": "https://publicdomainreview.org/",
+    "access": "outbound"
+  },
+  {
+    "id": "open-culture",
+    "category": "Culture",
+    "name": "Open Culture",
+    "url": "https://www.openculture.com/",
+    "access": "outbound"
+  },
+  {
+    "id": "met-museum",
+    "category": "Culture",
+    "name": "The Metropolitan Museum of Art",
+    "url": "https://www.metmuseum.org/",
+    "access": "api-review"
+  },
+  {
+    "id": "musicmap",
+    "category": "Culture",
+    "name": "Musicmap",
+    "url": "https://www.musicmap.info/",
+    "access": "outbound"
+  },
+  {
+    "id": "radiooooo",
+    "category": "Culture",
+    "name": "Radiooooo",
+    "url": "https://radiooooo.com/",
+    "access": "outbound"
+  },
+  {
+    "id": "listen-wikipedia",
+    "category": "Curiosity",
+    "name": "Listen to Wikipedia",
+    "url": "https://listen.hatnote.com/",
+    "access": "outbound"
+  },
+  {
+    "id": "random-wikipedia",
+    "category": "Knowledge",
+    "name": "Random Wikipedia article",
+    "url": "https://en.wikipedia.org/wiki/Special:Random",
+    "access": "outbound"
+  },
+  {
+    "id": "time-and-date",
+    "category": "Knowledge",
+    "name": "timeanddate",
+    "url": "https://www.timeanddate.com/",
+    "access": "outbound"
+  },
+  {
+    "id": "science-daily",
+    "category": "Science",
+    "name": "ScienceDaily",
+    "url": "https://www.sciencedaily.com/",
+    "access": "outbound"
+  },
+  {
+    "id": "arxiv",
+    "category": "Science",
+    "name": "arXiv",
+    "url": "https://arxiv.org/",
+    "access": "api-review"
+  },
+  {
+    "id": "observable",
+    "category": "Knowledge",
+    "name": "Observable",
+    "url": "https://observablehq.com/",
+    "access": "outbound"
+  }
+]

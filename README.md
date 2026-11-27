@@ -20,7 +20,8 @@ The first release is a static web application with:
 - A live USGS GeoJSON feed for earthquakes in the past day.
 - A Leaflet map with recent earthquake markers.
 - NASA Astronomy Picture of the Day using the public DEMO_KEY (rate limits apply).
-- A small curated discovery engine.
+- A searchable catalog of all 50 curated sources, with category and access-method filters.
+- A small curated discovery engine and locally saved discoveries.
 - Direct source attribution and links.
 
 No backend, database, user account, or paid API key is required for this first milestone.

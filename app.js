@@ -72,7 +72,7 @@ function setView(view){
   document.querySelectorAll(".nav-item[data-view]").forEach(button=>button.classList.toggle("active",button.dataset.view===view));
   const labels={overview:"OVERVIEW",earth:"EARTH",universe:"UNIVERSE",humanity:"HUMANITY",knowledge:"KNOWLEDGE",history:"TIME MACHINE"};
   $("#current-section").textContent=labels[view]||"OVERVIEW";
-  const target={overview:".welcome",earth:".content-grid",universe:".apod-panel",humanity:".explore-panel",knowledge:".explore-panel",history:".explore-panel"}[view];
+  const target={overview:".welcome",earth:".content-grid",universe:".apod-panel",humanity:".explore-panel",knowledge:".explore-panel",history:"#source-catalog"}[view];
   if(target)document.querySelector(target).scrollIntoView({behavior:"smooth",block:"start"});
 }
 function tickClock(){$("#clock").textContent=new Date().toISOString().slice(11,19)+" UTC"}
@@ -83,4 +83,34 @@ $("#refresh-btn").addEventListener("click",()=>{loadEarthquakes();loadApod()});
 $("#save-discovery").addEventListener("click",()=>{if(!state.currentDiscovery)return;const item=state.currentDiscovery;if(!state.saved.some(saved=>saved.url===item.url)){state.saved.unshift(item);saveSaved();$("#save-discovery").textContent="✓ Saved";$("#save-discovery").disabled=true;}});
 $("#saved-nav").addEventListener("click",()=>{if(state.saved.length){const items=state.saved.slice(0,20);$("#discovery-body").innerHTML="<h2>Your saved discoveries</h2>"+items.map((item,index)=>"<p><a href=\""+escapeHTML(item.url)+"\" target=\"_blank\" rel=\"noreferrer\">"+(index+1)+". "+escapeHTML(item.title)+" ↗</a></p>").join("");$("#save-discovery").hidden=true;$("#discovery-dialog").showModal();}else{showDiscovery({title:"Your discovery shelf is empty",description:"Use Surprise me, then save the discoveries you want to revisit.",url:"https://github.com/ysamgh/live-dash",label:"LIVE DASH roadmap"});}});
 $("#discovery-dialog").addEventListener("close",()=>{$("#save-discovery").hidden=false});
-tickClock();setInterval(tickClock,1000);initMap();loadEarthquakes();loadApod();saveSaved();
+async function loadSources(){
+  const grid=$("#source-grid");
+  try{
+    const response=await fetch("data/sources.json",{cache:"no-cache"});
+    if(!response.ok)throw new Error("Source registry returned "+response.status);
+    state.sources=await response.json();
+    const categories=[...new Set(state.sources.map(item=>item.category))].sort();
+    $("#source-category").innerHTML='<option value="all">All categories</option>'+categories.map(category=>'<option value="'+escapeHTML(category)+'">'+escapeHTML(category)+'</option>').join("");
+    renderSources();
+  }catch(error){
+    grid.innerHTML='<div class="loading-state">The source catalog is unavailable. <button class="text-button" id="retry-sources">Try again</button></div>';
+    const retry=$("#retry-sources");if(retry)retry.addEventListener("click",loadSources);
+    console.error(error);
+  }
+}
+function renderSources(){
+  const query=$("#source-search").value.trim().toLowerCase();
+  const category=$("#source-category").value;
+  const access=$("#source-access").value;
+  const filtered=(state.sources||[]).filter(item=>{
+    const matchesQuery=!query||(item.name+" "+item.category+" "+item.id).toLowerCase().includes(query);
+    return matchesQuery&&(category==="all"||item.category===category)&&(access==="all"||item.access===access);
+  });
+  $("#source-count").textContent=filtered.length+" / "+(state.sources||[]).length+" SOURCES";
+  const labels={"api-integrated":"Integrated API","api-review":"API review","terms-review":"Terms review","outbound":"External destination","map-provider":"Map provider"};
+  $("#source-grid").innerHTML=filtered.length?filtered.map(item=>'<article class="source-card"><div class="source-card-top"><span class="source-category">'+escapeHTML(item.category)+'</span><span class="access-label access-'+escapeHTML(item.access)+'">'+escapeHTML(labels[item.access]||item.access)+'</span></div><h3>'+escapeHTML(item.name)+'</h3><a href="'+escapeHTML(item.url)+'" target="_blank" rel="noopener noreferrer">Open source ↗</a></article>').join(""):'<div class="loading-state source-empty">No sources match these filters. Try another search.</div>';
+}
+$("#source-search").addEventListener("input",renderSources);
+$("#source-category").addEventListener("change",renderSources);
+$("#source-access").addEventListener("change",renderSources);
+tickClock();setInterval(tickClock,1000);initMap();loadEarthquakes();loadApod();loadSources();saveSaved();

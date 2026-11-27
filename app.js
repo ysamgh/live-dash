@@ -72,7 +72,9 @@ function setView(view){
   document.querySelectorAll(".nav-item[data-view]").forEach(button=>button.classList.toggle("active",button.dataset.view===view));
   const labels={overview:"OVERVIEW",earth:"EARTH",universe:"UNIVERSE",humanity:"HUMANITY",knowledge:"KNOWLEDGE",history:"TIME MACHINE"};
   $("#current-section").textContent=labels[view]||"OVERVIEW";
-  const target={overview:".welcome",earth:".content-grid",universe:".apod-panel",humanity:".explore-panel",knowledge:".explore-panel",history:"#source-catalog"}[view];
+  const categoryForView={humanity:"Humanity",knowledge:"Knowledge",history:"History"}[view];
+  if(categoryForView&&state.sources){$("#source-category").value=categoryForView;renderSources();}
+  const target={overview:".welcome",earth:".content-grid",universe:".apod-panel",humanity:"#source-catalog",knowledge:"#source-catalog",history:"#source-catalog"}[view];
   if(target)document.querySelector(target).scrollIntoView({behavior:"smooth",block:"start"});
 }
 function tickClock(){$("#clock").textContent=new Date().toISOString().slice(11,19)+" UTC"}

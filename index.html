@@ -96,19 +96,11 @@
           <span class="count-pill" id="source-count">50 SOURCES</span>
         </div>
         <div class="source-controls">
-          <label class="source-search-label" for="source-search">Search the catalog</label>
-          <input id="source-search" type="search" placeholder="Search by name or topic…" autocomplete="off">
-          <label class="source-search-label" for="source-category">Category</label>
-          <select id="source-category"><option value="all">All categories</option></select>
-          <label class="source-search-label" for="source-access">Access</label>
-          <select id="source-access">
-            <option value="all">All access types</option>
-            <option value="api-integrated">Integrated API</option>
-            <option value="api-review">API review</option>
-            <option value="terms-review">Terms review</option>
-            <option value="outbound">External destination</option>
-            <option value="map-provider">Map provider</option>
-          </select>
+          <div class="source-control"><label class="source-search-label" for="source-search">Search the catalog</label><input id="source-search" type="search" placeholder="Search by name or topic…" autocomplete="off"></div>
+          <div class="source-control"><label class="source-search-label" for="source-category">Category</label><select id="source-category"><option value="all">All categories</option></select></div>
+          <div class="source-control"><label class="source-search-label" for="source-access">Access</label><select id="source-access">
+            <option value="all">All access types</option><option value="api-integrated">Integrated API</option><option value="api-review">API review</option><option value="terms-review">Terms review</option><option value="outbound">External destination</option><option value="map-provider">Map provider</option>
+          </select></div>
         </div>
         <div class="source-grid" id="source-grid" aria-live="polite">
           <div class="loading-state">Loading the source catalog…</div>

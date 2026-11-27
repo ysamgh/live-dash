@@ -1,0 +1,22 @@
+name: Validate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  static-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validate JavaScript syntax
+        run: node --check app.js
+      - name: Validate source registry
+        run: |
+          node -e "const fs=require('node:fs'); const data=JSON.parse(fs.readFileSync('data/sources.json','utf8')); if(data.length!==50) throw new Error('Expected 50 sources'); const ids=data.map(x=>x.id); if(new Set(ids).size!==ids.length) throw new Error('Duplicate source IDs'); for(const item of data){if(!item.name||!item.category||!/^https:\/\//.test(item.url)||!item.access) throw new Error('Invalid source: '+JSON.stringify(item));} console.log('Validated '+data.length+' source records');"

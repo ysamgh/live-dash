@@ -1,7 +1,7 @@
 const USGS_FEED = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson";
 const NASA_APOD = "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY";
 const $ = (selector) => document.querySelector(selector);
-const state = { quakes: [], map: null, markers: [], saved: loadSaved(), lastUpdated: null };
+const state = { quakes: [], map: null, markers: [], saved: loadSaved(), lastUpdated: null, currentDiscovery: null };
 const rabbitHoles = [
   { title: "The hidden infrastructure of the internet", description: "Thousands of kilometres of submarine cables carry most intercontinental data. Explore the physical network beneath our connected world.", url: "https://www.submarinecablemap.com/", label: "Submarine Cable Map" },
   { title: "A different view of the world", description: "Compare the true size of countries and see how map projections can distort our intuition.", url: "https://www.thetruesize.com/", label: "The True Size" },
@@ -55,6 +55,10 @@ async function loadApod(){
   }catch(error){$("#space-status").textContent="Unavailable";$("#apod-content").innerHTML='<div class="loading-state">NASA APOD could not be loaded right now. <a href="https://apod.nasa.gov/apod/astropix.html" target="_blank" rel="noreferrer">Visit NASA APOD ↗</a></div>';console.error(error)}
 }
 function showDiscovery(item){
+  state.currentDiscovery=item;
+  const alreadySaved=state.saved.some(saved=>saved.url===item.url);
+  $("#save-discovery").textContent=alreadySaved?"✓ Saved":"☆ Save discovery";
+  $("#save-discovery").disabled=alreadySaved;
   $("#discovery-body").innerHTML='<h2>'+escapeHTML(item.title)+'</h2><p>'+escapeHTML(item.description)+'</p><p><a href="'+escapeHTML(item.url)+'" target="_blank" rel="noreferrer">Explore '+escapeHTML(item.label||"source")+' ↗</a></p>';
   $("#discovery-dialog").showModal();
 }
@@ -76,5 +80,7 @@ document.querySelectorAll(".nav-item[data-view]").forEach(button=>button.addEven
 $("#discover-btn").addEventListener("click",discover);$("#discover-again").addEventListener("click",discover);$("#dialog-close").addEventListener("click",()=>$("#discovery-dialog").close());
 $("#random-source-btn").addEventListener("click",()=>{const item=rabbitHoles[Math.floor(Math.random()*rabbitHoles.length)];showDiscovery(item)});
 $("#refresh-btn").addEventListener("click",()=>{loadEarthquakes();loadApod()});
-$("#saved-nav").addEventListener("click",()=>{const item=state.saved[Math.floor(Math.random()*state.saved.length)];if(item)showDiscovery(item);else showDiscovery({title:"Your discovery shelf is empty",description:"Use Surprise me to find a place, event or idea. Saving discoveries will be available in a future release.",url:"https://github.com/ysamgh/live-dash",label:"LIVE DASH roadmap"})});
+$("#save-discovery").addEventListener("click",()=>{if(!state.currentDiscovery)return;const item=state.currentDiscovery;if(!state.saved.some(saved=>saved.url===item.url)){state.saved.unshift(item);saveSaved();$("#save-discovery").textContent="✓ Saved";$("#save-discovery").disabled=true;}});
+$("#saved-nav").addEventListener("click",()=>{if(state.saved.length){const items=state.saved.slice(0,20);$("#discovery-body").innerHTML="<h2>Your saved discoveries</h2>"+items.map((item,index)=>"<p><a href=\""+escapeHTML(item.url)+"\" target=\"_blank\" rel=\"noreferrer\">"+(index+1)+". "+escapeHTML(item.title)+" ↗</a></p>").join("");$("#save-discovery").hidden=true;$("#discovery-dialog").showModal();}else{showDiscovery({title:"Your discovery shelf is empty",description:"Use Surprise me, then save the discoveries you want to revisit.",url:"https://github.com/ysamgh/live-dash",label:"LIVE DASH roadmap"});}});
+$("#discovery-dialog").addEventListener("close",()=>{$("#save-discovery").hidden=false});
 tickClock();setInterval(tickClock,1000);initMap();loadEarthquakes();loadApod();saveSaved();
